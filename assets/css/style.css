@@ -9,7 +9,9 @@ body,
 input {
     font-family: "Poppins", sans-serif;
 }
-
+.footer-alert{
+    color: red;
+}
 .site-header.inicio {
     background-image: url("../images/header.jpg");
     background-position: center center;

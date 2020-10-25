@@ -52,9 +52,13 @@
 <script src="<?php echo base_url(); ?>/assets/js/jquery-3.5.1.slim.min.js "></script>
 <script src="<?php echo base_url(); ?>/assets/js/popper.min.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
+
 <!-- validaciones JS personalizadas  -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="<?php echo base_url(); ?>/assets/js/main.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/login.js"></script>
+
 </body>
 
 </html>

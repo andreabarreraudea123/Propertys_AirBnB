@@ -2,20 +2,8 @@
     <div class="forms-containerr">
         <div class="signin-signup">
             <!-- formulario para inicio -->
-            <form action="<?php echo base_url() .'api/signIn'; ?>" method="POST"" class="sign-in-form">
+            <form action="<?php echo base_url() .'api/signIn'; ?>" method="POST"" class="sign-in-form" onsubmit="return validateSignIn();">
                 <h2 class="title">Sign in</h2>
-
-                 <?php
-            // foreach ($users as $user) {
-            //     $userRow = "<tr>
-            // <th scope='row'>{$user->id}</th>
-            //  <td>{$user->email}</td>
-            //  <td>{$user->password}</td>
-            //  </tr>";
-            //     echo $userRow;
-            // }
-            ?> 
-
                 <div class="input-field">
                     <i class="fas fa-user"></i>
                     <input type="email" placeholder="Email" />
@@ -44,7 +32,7 @@
 
 
             <!-- Formuario para registro -->
-            <form action="<?php echo base_url() .'api/signup'; ?>" method="POST" class="sign-up-form">
+            <form action="<?php echo base_url() .'api/signup'; ?>" method="POST" class="sign-up-form" onsubmit="return validateSignup();">
                 <h2 class="title">Sign up</h2>
                 <div class="row">
                     <div class="col-md-6">
