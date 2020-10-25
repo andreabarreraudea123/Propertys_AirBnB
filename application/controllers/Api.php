@@ -6,16 +6,16 @@ class Api extends CI_Controller
 {
 
     public function index()
-	{
-		$this->load->view('layouts/header');
-		$this->load->view('login');
-		$this->load->view('layouts/footer');
-	}
-    
+    {
+        $this->load->view('layouts/header');
+        $this->load->view('login');
+        $this->load->view('layouts/footer');
+    }
+
 
     public function signUp()
     {
-        
+
         $method = $_SERVER['REQUEST_METHOD'];
         if ($method === 'POST') {
             $dataJson = file_get_contents('php://input');
@@ -88,7 +88,6 @@ class Api extends CI_Controller
                     $response = array("Error" => true, "title" => "Identificación invalida",  'Message' => 'Solo cc o pas');
                     echo json_encode($response);
                 }
-
             } else {
                 header('content-type: application/json');
                 $response = array("Error" => true, "title" => "Campos",  'Message' => 'Campo no existe');
@@ -110,12 +109,12 @@ class Api extends CI_Controller
             $dataJson = file_get_contents('php://input');
             $data = json_decode($dataJson);
 
-            
+
 
             $users =  $this->UsersModel->getusers($data);
             if ($users != null) {
                 header('conten-type: application/json');
-                $response = array("usuario con"=>$users);
+                $response = array("usuario con" => $users);
                 echo json_encode($response);
             } else {
                 header('conten-type: application/json');
@@ -126,6 +125,221 @@ class Api extends CI_Controller
             header('content-type: application/json');
             $data = array('response' => 'bad request');
             echo json_encode($data);
+        }
+    }
+
+
+    public function property()
+    {
+        $this->load->view('layouts/header');
+        $this->load->view('property');
+        $this->load->view('layouts/footer');
+    }
+
+
+    public function addproperty()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method === 'POST') {
+            $dataJson = file_get_contents('php://input');
+            $data = json_decode($dataJson);
+
+            //validar que el campo exista
+            if (isset($data->title) && (isset($data->type)) && (isset($data->address)) && (isset($data->rooms)) && (isset($data->price)) && (isset($data->area)) && (isset($data->id_user))) {
+
+                //validar que el campo no vaya vació
+                if (
+                    $data->title == "" || $data->type == "" || $data->address == ""
+                    || $data->rooms == "" || $data->price == "" || $data->area == ""
+                    || $data->id_user == ""
+                ) {
+
+                    header('content-type: application/json');
+                    $response = array('response' => 'campos vacios');
+                    echo json_encode($response);
+                    //validar que el campo si es numerico
+                } elseif (is_numeric($data->rooms) &&  is_numeric($data->price) &&  is_numeric($data->area) &&  is_numeric($data->id_user)) {
+
+
+                    $this->UsersModel->addproperty($data);
+                    $response = array("Exitoso" => true, 'response' => 'Se inserto el registro de manera exitosa');
+                    echo json_encode($response);
+                } else {
+                    header('content-type: application/json');
+                    $response = array('response' => 'campo no numerico');
+                    echo json_encode($response);
+                }
+            } else {
+                header('content-type: application/json');
+                $response = array('response' => 'no existe');
+                echo json_encode($response);
+            }
+        } else {
+            header('content-type: application/json');
+            $response = array('response' => 'mal metodo');
+            echo json_encode($response);
+        }
+    }
+
+
+
+    public function deleteProperty()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method === 'DELETE') {
+            $dataJson = file_get_contents('php://input');
+            $data = json_decode($dataJson);
+
+            if ($data->id == "" || ($data->id_user == "")) {
+                echo json_encode(array('Error' => true, "title" => "Campos Vacios", 'Message' => 'Por favor valide el campo ID o ID_USER, puede estar vacio'));
+            } else {
+
+                if ($data->id == true && $data->id_user == true) {
+                    $this->UsersModel->delete($data);
+                    header('content-type: application/json');
+                    $response = array('response' => 'register delete');
+                    echo json_encode($response);
+                } else {
+                    header('content-type: application/json');
+                    $response = array('response' => 'el id_user no esta permitido');
+                    echo json_encode($response);
+                }
+            }
+        } else {
+            header('content-type: application/json');
+            $response = array('response' => 'bad request');
+            echo json_encode($response);
+        }
+    }
+
+
+    public function listProperties()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method === 'GET') {
+            $dataJson = file_get_contents('php://input');
+            $data = json_decode($dataJson);
+
+            $result = $this->UsersModel->listProperties();
+            header('content-type: application/json');
+            $response = array('response' => $result);
+            echo json_encode($response);
+        } else {
+            header('content-type: application/json');
+            $response = array('response' => 'bad request');
+            echo json_encode($response);
+        }
+    }
+
+    public function getProperties()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method === 'GET') {
+            $dataJson = file_get_contents('php://input');
+            $data = json_decode($dataJson);
+
+            $result = $this->UsersModel->getProperties($data->id_user);
+            header('content-type: application/json');
+            $response = array('response' => $result);
+            echo json_encode($response);
+        } else {
+            header('content-type: application/json');
+            $response = array('response' => 'bad request');
+            echo json_encode($response);
+        }
+    }
+
+
+    public function updateProperty()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method === 'PUT') {
+            $dataJson = file_get_contents('php://input');
+            $data = json_decode($dataJson);
+            if (isset($data->title) && (isset($data->type)) && (isset($data->address)) && (isset($data->rooms)) && (isset($data->price)) && (isset($data->area)) && (isset($data->id_user))) {
+
+                if (
+                    $data->title == "" || $data->type == "" || $data->address == ""
+                    || $data->rooms == "" || $data->price == "" || $data->area == ""
+                    || $data->id_user == ""
+                ) {
+                    header('content-type: application/json');
+                    $response = array("Error" => false, "title" => "Campo vacio", 'Message' => 'formato invalido, hay un campo vacio o tiene datos invalidos. Por favor valide');
+                    echo json_encode($response);
+                } else {
+                    //validar que el campo si es numerico
+                    if (is_numeric($data->rooms) &&  is_numeric($data->price) &&  is_numeric($data->area) && is_numeric($data->id_user) && is_numeric($data->id)) {
+
+                        $Register = $this->UsersModel->getPropertiesForId($data->id_user);
+                        if ($Register != null) {
+                            header('content-type: application/json');
+                            $response = array("Error" => false, "title" => "Actualizacion", 'Message' => 'El id_user que desea actualizar no esta permito para la accion');
+                            echo json_encode($response);
+                        } else {
+                            //$this->UsersModel->updateProperty($data);
+                            header('content-type: application/json');
+                            $response = array('response' => 'update completed');
+                            echo json_encode($response);
+                        }
+                    } else {
+                        header('conten-type: application/json');
+                        $response = array("Error" => false, "title" => "Campo no valido", 'Message' => 'formato invalido, algun campo no es numerico. Por favor valide');
+                        echo json_encode($response);
+                    }
+                }
+            } else {
+                header('content-type: application/json');
+                $response = array('response' => 'el campo no existe');
+                echo json_encode($response);
+            }
+        } else {
+            header('content-type: application/json');
+            $response = array('response' => 'bad request');
+            echo json_encode($response);
+        }
+    }
+
+    public function getSortedProperties()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method === 'GET') {
+            $result = $this->UsersModel->getSortedProperties();
+            if ($result != null) {
+                header('content-type: application/json');
+                $response = array('response' => $result);
+                echo json_encode($response);
+            } else {
+                header('content-type: application/json');
+                $response = array('response' => 'no se encontraron registros en la BD');
+                echo json_encode($response);
+            }
+        } else {
+            header('content-type: application/json');
+            $response = array('response' => 'bad request');
+            echo json_encode($response);
+        }
+    }
+
+    public function getSortedUserProperties()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method === 'GET') {
+            $dataJson = file_get_contents('php://input');
+            $data = json_decode($dataJson);
+            $result = $this->UsersModel->getSortedUserProperties($data->id_user);
+            if ($result != null) {
+                header('content-type: application/json');
+                $response = array('response' => $result);
+                echo json_encode($response);
+            } else {
+                header('content-type: application/json');
+                $response = array('response' => 'el id no existe');
+                echo json_encode($response);
+            }
+        } else {
+            header('content-type: application/json');
+            $response = array('response' => 'bad request');
+            echo json_encode($response);
         }
     }
 }

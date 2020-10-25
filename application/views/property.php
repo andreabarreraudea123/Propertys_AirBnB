@@ -26,17 +26,11 @@
                     <p class='card-text'><strong>N° de habitaciones: </strong>{$property->rooms}</p>
                     <p class='card-text'><strong>Precio: $</strong>{$property->price}</p>
                     <p class='card-text'><strong>Area: </strong>{$property->area}mt</p>
-                    <a href= 'http://localhost/WEBII/AirBnB_Propertys/Api/deleteProperty?id={$property->id}'card-link' class='btn btn-danger mr-5'>DELETE</a>
-                    <a href= 'http://localhost/WEBII/AirBnB_Propertys/Api/updateProperty?id={$property->id}'card-link' class='btn btn-success ml-5'>UPDATE</a>
-                    
-
+                    <a href= 'http://localhost/ProgramacionWeb2/AirBnB_Propertys/Api/deleteProperty?id={$property->id}'card-link' class='btn btn-danger mr-5'>DELETE</a>
+                    <a href= 'http://localhost/ProgramacionWeb2/AirBnB_Propertys/Api/updateProperty?id={$property->id}'card-link' class='btn btn-success ml-5'>UPDATE</a>               
                 </div>
             </div>
         </div>
-        
-        
-        
-        
         ";
         
     echo $template;
