@@ -1,10 +1,11 @@
 function validateSignup() {
+
 	let type_identification = document.getElementById("type_identification").value;
 	let identification = document.getElementById("identification").value;
 	let name = document.getElementById("name").value;
 	let lastname = document.getElementById("lastname").value;
-	let email = document.getElementById("email").value;
-	let password = document.getElementById("password").value;
+	let emailsito = document.getElementById("emailsito").value;
+	let passwordd = document.getElementById("passwordd").value;
 
 	if (type_identification === "") {
 		Swal.fire({
@@ -75,7 +76,9 @@ function validateSignup() {
 			showCloseButton: true,
 			closeButtonAriaLabel: 'close alert'
 		});
+
 		return false;
+
 	} else if (lastname === "") {
 		Swal.fire({
 			title: "Error",
@@ -99,7 +102,8 @@ function validateSignup() {
 			closeButtonAriaLabel: 'close alert'
 		});
 		return false;
-	} else if (email === "") {
+
+	} else if (emailsito === "") {
 		Swal.fire({
 			title: "Error",
 			text: "El campo email esta vacio",
@@ -122,7 +126,8 @@ function validateSignup() {
 			closeButtonAriaLabel: 'close alert'
 		});
 		return false;
-	} else if (password === "") {
+
+	} else if (passwordd === "") {
 		Swal.fire({
 			title: "Error",
 			text: "El campo password esta vacio",
@@ -146,7 +151,11 @@ function validateSignup() {
 		});
 		return false;
 	}
+
 }
+
+
+
 
 // function validateSignIn() {
 

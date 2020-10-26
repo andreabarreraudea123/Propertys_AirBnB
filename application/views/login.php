@@ -2,17 +2,20 @@
     <div class="forms-containerr">
         <div class="signin-signup">
             <!-- formulario para inicio -->
-            <form action="<?php echo base_url() .'api/signIn'; ?>" method="POST"" class="sign-in-form" onsubmit="return validateSignIn();">
+            <form name="Sign" action="<?php echo base_url() . 'Api/signIn'; ?>" method="POST" class="sign-in-form" onsubmit="return ();">
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="email" placeholder="Email" />
+
+                    <input type="email" name="email" id="email" value="<?php echo set_value('email'); ?>" placeholder="email" />
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" />
+                    <input type="password" name="password" id="password" value="<?php echo set_value('password'); ?>" placeholder="password" />
+
                 </div>
-                <input type="submit" value="Login" class="btn solid"/>
+                <input type="submit" name="Sign" value="Login" class="btnn solid" />
+
                 <p class="social-text">Or Sign in with social platforms</p>
                 <div class="social-media">
                     <a href="#" class="social-icon">
@@ -32,7 +35,7 @@
 
 
             <!-- Formuario para registro -->
-            <form action="<?php echo base_url() .'api/signup'; ?>" method="POST" class="sign-up-form" onsubmit="return validateSignup();">
+            <form name="Signup" action="<?php echo base_url() . 'Api/signUp'; ?>" method="POST" class="sign-up-form" onsubmit="return validateSignup();">
                 <h2 class="title">Sign up</h2>
                 <div class="row">
                     <div class="col-md-6">
@@ -61,16 +64,17 @@
 
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" name="email" id="email" placeholder="email" />
+                            <input type="email" name="email" id="emailsito" placeholder="email" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" name="password" id="password" placeholder="password" />
+                            <input type="password" name="password" id="passwordd" placeholder="password" />
                         </div>
                     </div>
                 </div>
+                <input  type="submit" class="btnn" role="button" aria-pressed="true" name="Signup" value="Sign up" onclick=""/>
+                <!-- <input type="submit" class="" role="button" aria-pressed="true" name="" value="Sign up"> -->
 
-                <input type="submit" class="btn" value="Sign up" />
 
                 <p class="social-text">Or Sign up with social platforms</p>
                 <div class="social-media">
@@ -100,7 +104,7 @@
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
                     ex ratione. Aliquid!
                 </p>
-                <button class="btn transparent" id="sign-up-btn">
+                <button class="btnn transparent" id="sign-up-btn">
                     Sign up
                 </button>
             </div>
@@ -113,7 +117,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
                     laboriosam ad deleniti.
                 </p>
-                <button class="btn transparent" id="sign-in-btn">
+                <button class="btnn transparent" id="sign-in-btn">
                     Sign in
                 </button>
             </div>
