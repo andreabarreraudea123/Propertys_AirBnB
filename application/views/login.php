@@ -2,7 +2,7 @@
     <div class="forms-containerr">
         <div class="signin-signup">
             <!-- formulario para inicio -->
-            <form name="Sign" action="<?php echo base_url() . 'Api/signIn'; ?>" method="POST" class="sign-in-form" onsubmit="return ();">
+            <form name="Sign" action="<?php echo base_url() . 'Api/signIn'; ?>" method="POST" class="sign-in-form" onsubmit="return validateSignIn();">
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>

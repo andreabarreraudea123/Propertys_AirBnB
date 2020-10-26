@@ -157,57 +157,57 @@ function validateSignup() {
 
 
 
-// function validateSignIn() {
+function validateSignIn() {
 
-// 	let email = document.getElementById("email").value;
-// 	let password = document.getElementById("password").value;
+	let email = document.getElementById("email").value;
+	let password = document.getElementById("password").value;
 
-// 	if (email === "") {
-// 		Swal.fire({
-// 			title: "Error",
-// 			text: "El campo email esta vacio",
-// 			icon: "error",
-// 			confirmButtonText: 'Continuar',
-// 			footer: '<span class="footer-alert">Esta información es importante</span>',
-// 			background: '#ddd',
-// 			backdrop: true,
-// 			toast: true,
-// 			position: 'center',
-// 			allowOutsideClick: false,
-// 			allowEscapeKey: true,
-// 			allowEnterKey: true,
-// 			stopKeydownPropagation: false,
-// 			showConfirmButton: true,
-// 			confirmButtonColor: '#c20707',
-// 			confirmButtonAriaLabel: 'Continuar',
-// 			buttonsStyling: true,
-// 			showCloseButton: true,
-// 			closeButtonAriaLabel: 'close alert'
-// 		});
-// 		return false;
+	if (email === "") {
+		Swal.fire({
+			title: "Error",
+			text: "El campo email esta vacio",
+			icon: "error",
+			confirmButtonText: 'Continuar',
+			footer: '<span class="footer-alert">Esta información es importante</span>',
+			background: '#ddd',
+			backdrop: true,
+			toast: true,
+			position: 'center',
+			allowOutsideClick: false,
+			allowEscapeKey: true,
+			allowEnterKey: true,
+			stopKeydownPropagation: false,
+			showConfirmButton: true,
+			confirmButtonColor: '#c20707',
+			confirmButtonAriaLabel: 'Continuar',
+			buttonsStyling: true,
+			showCloseButton: true,
+			closeButtonAriaLabel: 'close alert'
+		});
+		return false;
 
-// 	} else if (password === "") {
-// 		Swal.fire({
-// 			title: "Error",
-// 			text: "El campo password esta vacio",
-// 			icon: "error",
-// 			confirmButtonText: 'Continuar',
-// 			footer: '<span class="footer-alert">Esta información es importante</span>',
-// 			background: '#ddd',
-// 			backdrop: true,
-// 			toast: true,
-// 			position: 'center',
-// 			allowOutsideClick: false,
-// 			allowEscapeKey: true,
-// 			allowEnterKey: true,
-// 			stopKeydownPropagation: false,
-// 			showConfirmButton: true,
-// 			confirmButtonColor: '#c20707',
-// 			confirmButtonAriaLabel: 'Continuar',
-// 			buttonsStyling: true,
-// 			showCloseButton: true,
-// 			closeButtonAriaLabel: 'close alert'
-// 		});
-// 		return false;
-// 	}
-// }
+	} else if (password === "") {
+		Swal.fire({
+			title: "Error",
+			text: "El campo password esta vacio",
+			icon: "error",
+			confirmButtonText: 'Continuar',
+			footer: '<span class="footer-alert">Esta información es importante</span>',
+			background: '#ddd',
+			backdrop: true,
+			toast: true,
+			position: 'center',
+			allowOutsideClick: false,
+			allowEscapeKey: true,
+			allowEnterKey: true,
+			stopKeydownPropagation: false,
+			showConfirmButton: true,
+			confirmButtonColor: '#c20707',
+			confirmButtonAriaLabel: 'Continuar',
+			buttonsStyling: true,
+			showCloseButton: true,
+			closeButtonAriaLabel: 'close alert'
+		});
+		return false;
+	}
+}

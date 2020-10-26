@@ -24,6 +24,7 @@ class Api extends CI_Controller
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
             $password = $_POST['password'];
+            
             $data = array(
 
                 'type_identification' => $type_identification,
@@ -80,14 +81,14 @@ class Api extends CI_Controller
                         // if ($result->num_rows > 0) {
                         //     echo json_encode(array('Error' => true, "title" => "Usuario ya existe", 'Message' => 'Por favor verifique la identificación con la que se intenta registrar ya existe'));
                         // } else {
-                            // query para enviar datos a la DB
-                            $this->UsersModel->signUp($data);
-                            header('content-type: application/json');
-                            $response = array("Error" => false, "title" => "Usuario Guardado", 'Message' => 'Campos existen, User Guardado con satisfaccion');
-                            echo json_encode($response);
-                            $redirect = base_url().'Api';
-                            header("location: $redirect");
-                            
+                        // query para enviar datos a la DB
+                        $this->UsersModel->signUp($data);
+                        header('content-type: application/json');
+                        $response = array("Error" => false, "title" => "Usuario Guardado", 'Message' => 'Campos existen, User Guardado con satisfaccion');
+                        echo json_encode($response);
+                        $redirect = base_url() . 'Api';
+                        header("location: $redirect");
+
                         //}
                     }
                 } else if ($data['type_identification'] == "CC" || $data['type_identification'] == "cc" || $data['type_identification'] == "Cc") {
@@ -99,7 +100,7 @@ class Api extends CI_Controller
                         header('content-type: application/json');
                         $response = array("Error" => false, "title" => "Usuario Guardado", 'Message' => 'Campos existen, User Guardado con satisfaccion');
                         echo json_encode($response);
-                        $redirect = base_url().'Api';
+                        $redirect = base_url() . 'Api';
                         header("location: $redirect");
                     } else {
 
@@ -119,7 +120,7 @@ class Api extends CI_Controller
             } //fin del isset
 
         } else {
-            $redirect = base_url().'Api';
+            $redirect = base_url() . 'Api';
             header("location: $redirect");
         } //fin del metodo
 
@@ -141,7 +142,7 @@ class Api extends CI_Controller
                 header('conten-type: application/json');
                 $response = array("usuario con" => $users);
                 echo json_encode($response);
-                $redirect = base_url().'Property';
+                $redirect = base_url() . 'Property';
                 header("location: $redirect");
             } else {
                 header('conten-type: application/json');
@@ -152,7 +153,7 @@ class Api extends CI_Controller
             header('content-type: application/json');
             $data = array('response' => 'bad request');
             echo json_encode($data);
-            $redirect = base_url().'Property';
+            $redirect = base_url() . 'Property';
             header("location: $redirect");
         }
     }
@@ -275,8 +276,6 @@ class Api extends CI_Controller
             echo json_encode($response);
         }
     }
-
-    
 
     public function updateProperty()
     {
