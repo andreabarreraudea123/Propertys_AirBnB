@@ -141,6 +141,8 @@ class Api extends CI_Controller
                 header('conten-type: application/json');
                 $response = array("usuario con" => $users);
                 echo json_encode($response);
+                $redirect = base_url().'Property';
+                header("location: $redirect");
             } else {
                 header('conten-type: application/json');
                 $data = array('response' => 'registro no existe');
@@ -150,6 +152,8 @@ class Api extends CI_Controller
             header('content-type: application/json');
             $data = array('response' => 'bad request');
             echo json_encode($data);
+            $redirect = base_url().'Property';
+            header("location: $redirect");
         }
     }
 
