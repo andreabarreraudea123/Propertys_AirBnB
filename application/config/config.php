@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/ProgramacionWeb2/Propertys_AirBnB';
+$config['base_url'] = 'http://localhost/Propertys_AirBnB';
 
 /*
 |--------------------------------------------------------------------------
